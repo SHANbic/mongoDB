@@ -17,4 +17,13 @@ describe('Deleting a user', () => {
         done();
       });
   });
+
+  it('model class remove', done => {
+    User.remove({ name: 'Joe' })
+      .then(() => User.findOne({ name: 'Joe' }))
+      .then(user => {
+        assert(user === null);
+        done();
+      });
+  });
 });
